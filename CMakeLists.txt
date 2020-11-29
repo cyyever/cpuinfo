@@ -72,7 +72,6 @@ ELSEIF(NOT CMAKE_SYSTEM_PROCESSOR MATCHES "^(i[3-6]86|AMD64|amd64|x86(_64)?|armv
     "Target processor architecture \"${CMAKE_SYSTEM_PROCESSOR}\" is not supported in cpuinfo. "
     "cpuinfo will compile, but cpuinfo_initialize() will always fail.")
   SET(CPUINFO_SUPPORTED_PLATFORM FALSE)
-  ENDIF()
 ENDIF()
 
 IF(NOT CMAKE_SYSTEM_NAME)
@@ -199,7 +198,6 @@ SET(CPUINFO_SRCS
     SET(THREADS_PREFER_PTHREAD_FLAG TRUE)
     FIND_PACKAGE(Threads REQUIRED)
   ENDIF()
-ENDIF()
 
 IF(CPUINFO_LIBRARY_TYPE STREQUAL "default")
   ADD_LIBRARY(cpuinfo ${CPUINFO_SRCS})

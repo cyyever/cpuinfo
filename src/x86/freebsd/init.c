@@ -122,7 +122,6 @@ void cpuinfo_x86_freebsd_init(void) {
 
 	uint32_t threads_per_l1 = 0, l1_count = 0;
 	if (x86_processor.cache.l1i.size != 0 || x86_processor.cache.l1d.size != 0) {
-		threads_per_l1 = freebsd_topology.threads_per_cache[1];
 		if (threads_per_l1 == 0) {
 			/* Assume that threads on the same core share L1 */
 			threads_per_l1 = freebsd_topology.threads / freebsd_topology.cores;
@@ -135,7 +134,6 @@ void cpuinfo_x86_freebsd_init(void) {
 
 	uint32_t threads_per_l2 = 0, l2_count = 0;
 	if (x86_processor.cache.l2.size != 0) {
-		threads_per_l2 = freebsd_topology.threads_per_cache[2];
 		if (threads_per_l2 == 0) {
 			if (x86_processor.cache.l3.size != 0) {
 				/* This is not a last-level cache; assume that threads on the same core share L2 */
@@ -153,7 +151,6 @@ void cpuinfo_x86_freebsd_init(void) {
 
 	uint32_t threads_per_l3 = 0, l3_count = 0;
 	if (x86_processor.cache.l3.size != 0) {
-		threads_per_l3 = freebsd_topology.threads_per_cache[3];
 		if (threads_per_l3 == 0) {
 			/*
 			 * Assume that threads on the same package share L3.
@@ -169,7 +166,6 @@ void cpuinfo_x86_freebsd_init(void) {
 
 	uint32_t threads_per_l4 = 0, l4_count = 0;
 	if (x86_processor.cache.l4.size != 0) {
-		threads_per_l4 = freebsd_topology.threads_per_cache[4];
 		if (threads_per_l4 == 0) {
 			/*
 			 * Assume that all threads share this L4.
